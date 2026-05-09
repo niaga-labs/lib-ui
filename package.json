@@ -15,7 +15,8 @@
         "./styles/globals.css": "./src/styles/globals.css",
         "./styles/themes/admin.css": "./src/styles/themes/admin.css",
         "./styles/themes/storefront.css": "./src/styles/themes/storefront.css",
-        "./storefront/checkout/*": "./src/storefront/checkout/*.tsx"
+        "./storefront/checkout/*": "./src/storefront/checkout/*.tsx",
+        "./admin/*/*": "./src/admin/*/*.tsx"
     },
     "dependencies": {
         "clsx": "^2.1.1",
