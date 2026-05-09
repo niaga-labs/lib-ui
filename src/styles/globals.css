@@ -16,6 +16,10 @@
         --ui-accent-foreground: 222 47% 11%;
         --ui-destructive: 0 84% 60%;
         --ui-destructive-foreground: 210 40% 98%;
+        --ui-success: 142 76% 36%;
+        --ui-success-foreground: 0 0% 100%;
+        --ui-warning: 38 92% 50%;
+        --ui-warning-foreground: 0 0% 100%;
         --ui-border: 214 32% 91%;
         --ui-input: 214 32% 91%;
         --ui-ring: 222 47% 11%;
@@ -45,6 +49,10 @@
         --ui-accent-foreground: 210 40% 98%;
         --ui-destructive: 0 63% 31%;
         --ui-destructive-foreground: 210 40% 98%;
+        --ui-success: 142 76% 45%;
+        --ui-success-foreground: 222 47% 11%;
+        --ui-warning: 38 92% 60%;
+        --ui-warning-foreground: 222 47% 11%;
         --ui-border: 217 33% 17%;
         --ui-input: 217 33% 17%;
         --ui-ring: 213 27% 84%;

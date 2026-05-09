@@ -35,6 +35,14 @@ const preset: Partial<Config> = {
                     DEFAULT: "hsl(var(--ui-destructive))",
                     foreground: "hsl(var(--ui-destructive-foreground))",
                 },
+                success: {
+                    DEFAULT: "hsl(var(--ui-success))",
+                    foreground: "hsl(var(--ui-success-foreground))",
+                },
+                warning: {
+                    DEFAULT: "hsl(var(--ui-warning))",
+                    foreground: "hsl(var(--ui-warning-foreground))",
+                },
                 border: "hsl(var(--ui-border))",
                 input: "hsl(var(--ui-input))",
                 ring: "hsl(var(--ui-ring))",

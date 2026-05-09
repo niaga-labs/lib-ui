@@ -10,13 +10,25 @@
         ".": "./src/index.ts",
         "./lib/utils": "./src/lib/utils.ts",
         "./tailwind.preset": "./tailwind.preset.ts",
-        "./styles/globals.css": "./src/styles/globals.css"
+        "./primitives": "./src/primitives/index.ts",
+        "./primitives/*": "./src/primitives/*.tsx",
+        "./styles/globals.css": "./src/styles/globals.css",
+        "./styles/themes/admin.css": "./src/styles/themes/admin.css"
     },
     "dependencies": {
         "clsx": "^2.1.1",
         "tailwind-merge": "^3.4.0"
     },
     "peerDependencies": {
+        "@radix-ui/react-checkbox": "^1.3.0",
+        "@radix-ui/react-dialog": "^1.1.0",
+        "@radix-ui/react-label": "^2.1.0",
+        "@radix-ui/react-select": "^2.2.0",
+        "@radix-ui/react-separator": "^1.1.0",
+        "@radix-ui/react-slot": "^1.2.0",
+        "@radix-ui/react-tabs": "^1.1.0",
+        "class-variance-authority": "^0.7.1",
+        "lucide-react": "^0.555.0",
         "next": "^14.2.33",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
