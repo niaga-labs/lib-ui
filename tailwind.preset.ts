@@ -59,6 +59,12 @@ const preset: Partial<Config> = {
                 md: "calc(var(--ui-radius) - 2px)",
                 sm: "calc(var(--ui-radius) - 4px)",
             },
+            aspectRatio: {
+                "3/4": "3 / 4",
+                "4/5": "4 / 5",
+                "16/9": "16 / 9",
+                "21/9": "21 / 9",
+            },
         },
     },
     plugins: [require("tailwindcss-animate")],

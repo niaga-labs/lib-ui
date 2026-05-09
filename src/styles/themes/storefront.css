@@ -1,0 +1,102 @@
+/* ===========================================
+   STOREFRONT THEME — FASHION TOKENS
+   Mapped onto the lib-ui --ui-* namespace.
+   Plus storefront-only --ui-{primary,secondary,accent}-{light,dark}
+   shades used by storefront's local Tailwind extensions.
+   =========================================== */
+
+@layer base {
+    :root {
+        /* Base */
+        --ui-background: 42 60% 98%;
+        --ui-foreground: 30 20% 10%;
+
+        /* Card / popover */
+        --ui-card: 0 0% 100%;
+        --ui-card-foreground: 30 20% 10%;
+        --ui-popover: 0 0% 100%;
+        --ui-popover-foreground: 30 20% 10%;
+
+        /* Primary — fashion gold (TODO: per-tenant brand color) */
+        --ui-primary: 43 87% 38%;
+        --ui-primary-foreground: 0 0% 100%;
+        --ui-primary-light: 43 74% 49%;
+        --ui-primary-dark: 43 87% 30%;
+
+        /* Secondary — warm brown (TODO: per-tenant brand color) */
+        --ui-secondary: 25 76% 31%;
+        --ui-secondary-foreground: 0 0% 100%;
+        --ui-secondary-light: 25 56% 41%;
+        --ui-secondary-dark: 25 76% 21%;
+
+        /* Accent — warm copper */
+        --ui-accent: 30 60% 45%;
+        --ui-accent-foreground: 0 0% 100%;
+        --ui-accent-light: 30 60% 55%;
+        --ui-accent-dark: 30 60% 35%;
+
+        /* Muted */
+        --ui-muted: 40 10% 94%;
+        --ui-muted-foreground: 30 10% 46%;
+
+        /* Status */
+        --ui-destructive: 0 72% 51%;
+        --ui-destructive-foreground: 0 0% 100%;
+        --ui-success: 142 51% 44%;
+        --ui-success-foreground: 0 0% 100%;
+        --ui-warning: 38 92% 50%;
+        --ui-warning-foreground: 30 20% 10%;
+
+        /* Borders / input / ring */
+        --ui-border: 40 15% 85%;
+        --ui-input: 40 15% 85%;
+        --ui-ring: 43 87% 38%;
+        --ui-radius: 0.5rem;
+
+        /* Chart colors (re-stated; otherwise inherits lib-ui defaults) */
+        --ui-chart-1: 43 87% 38%;
+        --ui-chart-2: 25 76% 31%;
+        --ui-chart-3: 30 60% 45%;
+        --ui-chart-4: 142 51% 44%;
+        --ui-chart-5: 38 92% 50%;
+    }
+
+    .dark {
+        --ui-background: 228 45% 8%;
+        --ui-foreground: 42 60% 98%;
+
+        --ui-card: 228 45% 10%;
+        --ui-card-foreground: 42 60% 98%;
+        --ui-popover: 228 45% 10%;
+        --ui-popover-foreground: 42 60% 98%;
+
+        --ui-primary: 43 58% 52%;
+        --ui-primary-foreground: 228 45% 17%;
+        --ui-primary-light: 43 58% 62%;
+        --ui-primary-dark: 43 58% 42%;
+
+        --ui-secondary: 228 45% 25%;
+        --ui-secondary-foreground: 0 0% 100%;
+        --ui-secondary-light: 228 45% 35%;
+        --ui-secondary-dark: 228 45% 15%;
+
+        --ui-accent: 27 56% 45%;
+        --ui-accent-foreground: 0 0% 100%;
+        --ui-accent-light: 27 56% 55%;
+        --ui-accent-dark: 27 56% 35%;
+
+        --ui-muted: 228 45% 15%;
+        --ui-muted-foreground: 240 5% 65%;
+
+        --ui-destructive: 0 62% 40%;
+        --ui-destructive-foreground: 0 0% 100%;
+        --ui-success: 142 51% 44%;
+        --ui-success-foreground: 0 0% 100%;
+        --ui-warning: 38 92% 50%;
+        --ui-warning-foreground: 228 45% 17%;
+
+        --ui-border: 228 45% 20%;
+        --ui-input: 228 45% 20%;
+        --ui-ring: 43 58% 52%;
+    }
+}
