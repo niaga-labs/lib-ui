@@ -1,0 +1,146 @@
+/* ===========================================
+   WAREHOUSE THEME — mobile-first, scanner-driven UX
+   Mapped onto the lib-ui --warehouse-* namespace
+   =========================================== */
+
+@layer base {
+    :root {
+        /* Warehouse palette as HSL triples (consumed by tailwind.preset
+           via hsl(var(--warehouse-*)) — see frontend-warehouse for the
+           canonical Tailwind config wiring). Values match the Tailwind
+           palette colors that warehouse used pre-Phase-5 so visual
+           output is identical. */
+        --warehouse-primary: 221 83% 53%;       /* blue-600  #2563eb */
+        --warehouse-success: 142 76% 36%;       /* green-600 #16a34a */
+        --warehouse-warning: 21 90% 48%;        /* orange-600 #ea580c */
+        --warehouse-danger: 0 72% 51%;          /* red-600   #dc2626 */
+        --warehouse-dark: 217 33% 17%;          /* slate-800 #1e293b */
+        --warehouse-light: 210 40% 96%;         /* slate-100 #f1f5f9 */
+
+        /* Warehouse touch target — meets WCAG 2.1 SC 2.5.5 for tappable
+           UI in glove-on / shop-floor conditions. */
+        --warehouse-touch-target: 44px;
+    }
+}
+
+@layer components {
+    /* High contrast for warehouse environment */
+    .warehouse-container {
+        min-height: calc(100vh - 64px);
+        padding-bottom: 80px;
+        /* Space for bottom nav */
+    }
+
+    /* Large touch targets */
+    .touch-target {
+        min-height: var(--warehouse-touch-target);
+        min-width: var(--warehouse-touch-target);
+    }
+
+    /* Scanner input styling */
+    .scanner-input {
+        font-size: 18px;
+        padding: 16px;
+        border: 2px solid #cbd5e1;
+        border-radius: 8px;
+        width: 100%;
+        font-weight: 500;
+    }
+
+    .scanner-input:focus {
+        outline: none;
+        border-color: hsl(var(--warehouse-primary));
+        box-shadow: 0 0 0 3px hsl(var(--warehouse-primary) / 0.1);
+    }
+
+    /* Status badges */
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .status-pending {
+        background: #fef3c7;
+        color: #92400e;
+    }
+
+    .status-in-progress {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    .status-completed {
+        background: #d1fae5;
+        color: #065f46;
+    }
+
+    .status-error {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+
+    /* Loading spinner */
+    .spinner {
+        border: 3px solid #f3f4f6;
+        border-top: 3px solid hsl(var(--warehouse-primary));
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: warehouse-spin 1s linear infinite;
+    }
+
+    @keyframes warehouse-spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Offline indicator */
+    .offline-banner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: hsl(var(--warehouse-danger));
+        color: white;
+        padding: 8px;
+        text-align: center;
+        font-weight: 600;
+        z-index: 1000;
+    }
+
+    /* Card styling */
+    .card {
+        background: white;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-clickable {
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .card-clickable:hover {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .card-clickable:active {
+        transform: translateY(0);
+    }
+
+    /* iOS safe-area aware bottom padding for the BottomNav */
+    .safe-area-bottom {
+        padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+}
