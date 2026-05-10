@@ -18,6 +18,7 @@
         "./styles/themes/warehouse.css": "./src/styles/themes/warehouse.css",
         "./storefront/checkout/*": "./src/storefront/checkout/*.tsx",
         "./admin/*/*": "./src/admin/*/*.tsx",
+        "./admin/marketplace/marketplace": "./src/admin/marketplace/marketplace.ts",
         "./admin/polaris": "./src/admin/polaris/index.ts",
         "./warehouse": "./src/warehouse/index.ts",
         "./warehouse/*": "./src/warehouse/*.tsx",
