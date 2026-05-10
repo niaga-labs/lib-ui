@@ -22,6 +22,7 @@
         "./admin/users/users": "./src/admin/users/users.ts",
         "./admin/categories/categories": "./src/admin/categories/categories.ts",
         "./admin/collections/collections": "./src/admin/collections/collections.ts",
+        "./admin/content/banners": "./src/admin/content/banners.ts",
         "./admin/polaris": "./src/admin/polaris/index.ts",
         "./warehouse": "./src/warehouse/index.ts",
         "./warehouse/*": "./src/warehouse/*.tsx",
@@ -36,6 +37,7 @@
         "tailwind-merge": "^3.4.0"
     },
     "peerDependencies": {
+        "@hookform/resolvers": "^3.10.0",
         "@radix-ui/react-checkbox": "^1.3.0",
         "@radix-ui/react-dialog": "^1.1.0",
         "@radix-ui/react-dropdown-menu": "^2.1.0",
@@ -53,10 +55,12 @@
         "next": "^14.2.33",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "react-hook-form": "^7.75.0",
         "recharts": "^3.5.1",
         "sonner": "^1.7.4",
         "tailwindcss": "^3.4.1",
-        "tailwindcss-animate": "^1.0.7"
+        "tailwindcss-animate": "^1.0.7",
+        "zod": "^3.25.76"
     },
     "devDependencies": {
         "@types/node": "^20.19.25",
