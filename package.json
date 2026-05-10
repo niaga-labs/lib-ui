@@ -21,6 +21,7 @@
         "./admin/marketplace/marketplace": "./src/admin/marketplace/marketplace.ts",
         "./admin/users/users": "./src/admin/users/users.ts",
         "./admin/categories/categories": "./src/admin/categories/categories.ts",
+        "./admin/collections/collections": "./src/admin/collections/collections.ts",
         "./admin/polaris": "./src/admin/polaris/index.ts",
         "./warehouse": "./src/warehouse/index.ts",
         "./warehouse/*": "./src/warehouse/*.tsx",
