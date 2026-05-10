@@ -23,6 +23,7 @@
         "./admin/categories/categories": "./src/admin/categories/categories.ts",
         "./admin/collections/collections": "./src/admin/collections/collections.ts",
         "./admin/content/banners": "./src/admin/content/banners.ts",
+        "./admin/products/products": "./src/admin/products/products.ts",
         "./admin/polaris": "./src/admin/polaris/index.ts",
         "./warehouse": "./src/warehouse/index.ts",
         "./warehouse/*": "./src/warehouse/*.tsx",
