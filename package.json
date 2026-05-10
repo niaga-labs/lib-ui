@@ -20,6 +20,7 @@
         "./admin/*/*": "./src/admin/*/*.tsx",
         "./admin/marketplace/marketplace": "./src/admin/marketplace/marketplace.ts",
         "./admin/users/users": "./src/admin/users/users.ts",
+        "./admin/categories/categories": "./src/admin/categories/categories.ts",
         "./admin/polaris": "./src/admin/polaris/index.ts",
         "./warehouse": "./src/warehouse/index.ts",
         "./warehouse/*": "./src/warehouse/*.tsx",
