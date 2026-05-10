@@ -6,6 +6,7 @@ export * from "./checkbox";
 export * from "./collapsible";
 export * from "./dialog";
 export * from "./dropdown-menu";
+export * from "./image-upload";
 export * from "./input";
 export * from "./label";
 export * from "./progress";
