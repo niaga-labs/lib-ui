@@ -6,15 +6,75 @@ export type BatikTechnique = 'hand_drawn' | 'stamped' | 'printed' | 'combined';
 // Defect types for clearance/sale products
 export type DefectType = 'minor' | 'color' | 'stitch' | 'sample' | 'other';
 
-// Default Malay labels for the KDMB tenant. Other tenants can supply their own
-// label map by passing `defectTypeLabels` to ProductFormShopify if needed —
-// the form falls back to this default.
+// Tenants can supply their own label map by passing `defectTypeLabels` to
+// ProductForm; the form falls back to this English default.
 export const DEFECT_TYPE_LABELS: Record<DefectType, string> = {
-    minor: 'Kecacatan Kecil',
-    color: 'Warna Tidak Sekata',
-    stitch: 'Jahitan Tidak Sempurna',
-    sample: 'Sample/Contoh',
-    other: 'Lain-lain',
+    minor: 'Minor Defect',
+    color: 'Color Variation',
+    stitch: 'Imperfect Stitching',
+    sample: 'Sample',
+    other: 'Other',
+};
+
+// Per-section labels for ProductForm clearance/preorder/tailoring sections.
+// Tenants override by passing `productFormLabels` to the form; the component
+// falls back to the English defaults below.
+export interface ProductFormLabels {
+    clearance: {
+        sectionTitle: string;
+        toggleLabel: string;
+        toggleHint: string;
+        defectTypeLabel: string;
+        defectTypePlaceholder: string;
+        defectDescriptionLabel: string;
+        defectDescriptionPlaceholder: string;
+        defectDescriptionHint: string;
+    };
+    preorder: {
+        toggleLabel: string;
+        toggleHint: string;
+        leadDaysLabel: string;
+        leadDaysHint: string;
+        messageLabel: string;
+        messagePlaceholder: string;
+        messageHint: string;
+    };
+    tailoring: {
+        sectionTitle: string;
+        toggleLabel: string;
+        activeButtonHint: string;
+        manageLinkPrefix: string;
+        manageLinkText: string;
+    };
+}
+
+export const DEFAULT_PRODUCT_FORM_LABELS: ProductFormLabels = {
+    clearance: {
+        sectionTitle: 'Clearance Sale',
+        toggleLabel: 'Defect/Clearance Product',
+        toggleHint: 'Mark this if the product has a defect to sell at a discount',
+        defectTypeLabel: 'Defect Type *',
+        defectTypePlaceholder: 'Select defect type',
+        defectDescriptionLabel: 'Defect Description',
+        defectDescriptionPlaceholder: 'Describe the defect for customers...',
+        defectDescriptionHint: 'This description will appear on the clearance page',
+    },
+    preorder: {
+        toggleLabel: 'Allow Pre-order',
+        toggleHint: 'Customers can buy even when out of stock (processed within a set lead time)',
+        leadDaysLabel: 'Lead Time (days)',
+        leadDaysHint: 'How many days are needed to prepare this product',
+        messageLabel: 'Pre-order Message (optional)',
+        messagePlaceholder: 'Example: Product will be ready in 2 weeks after the order is confirmed',
+        messageHint: 'This message will be shown to customers at checkout',
+    },
+    tailoring: {
+        sectionTitle: 'Tailoring',
+        toggleLabel: 'Tailorable',
+        activeButtonHint: '✓ An "Add Tailoring" button will appear on this product page.',
+        manageLinkPrefix: 'Manage tailoring services in ',
+        manageLinkText: 'Tailoring Settings',
+    },
 };
 
 export interface ProductVariant {

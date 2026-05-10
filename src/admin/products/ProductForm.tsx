@@ -6,12 +6,14 @@ import ProductColorSelector from './ProductColorSelector';
 import { useToast } from '../common/Toast';
 import {
     DEFECT_TYPE_LABELS,
+    DEFAULT_PRODUCT_FORM_LABELS,
     type DefectType,
     type Product,
     type ProductVariant,
     type ProductMedia,
     type ProductFormApi,
     type ProductColorApi,
+    type ProductFormLabels,
 } from './products';
 
 // Simple inline icon components (no external dependency)
@@ -39,7 +41,7 @@ const InformationCircleIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
-export interface ProductFormShopifyProps {
+export interface ProductFormProps {
     mode: 'create' | 'edit';
     initialData?: Product;
     api: ProductFormApi;
@@ -50,8 +52,10 @@ export interface ProductFormShopifyProps {
     onAfterSave: (productId: string) => void;
     /** Called when the user clicks Duplicate (edit mode only). */
     onDuplicate?: (productId: string) => void;
-    /** Optional override of the Malay defect-type labels. */
+    /** Optional override of the defect-type select labels. Defaults to English. */
     defectTypeLabels?: Record<DefectType, string>;
+    /** Optional override of the clearance / pre-order / tailoring section labels. Defaults to English. */
+    productFormLabels?: ProductFormLabels;
 }
 
 interface FormData {
@@ -99,7 +103,7 @@ interface FormData {
     isNewArrival: boolean;
 }
 
-export default function ProductFormShopify({
+export default function ProductForm({
     mode,
     initialData,
     api,
@@ -108,7 +112,8 @@ export default function ProductFormShopify({
     onAfterSave,
     onDuplicate,
     defectTypeLabels = DEFECT_TYPE_LABELS,
-}: ProductFormShopifyProps) {
+    productFormLabels = DEFAULT_PRODUCT_FORM_LABELS,
+}: ProductFormProps) {
     const { showToast, ToastContainer } = useToast();
     const [loading, setLoading] = useState(false);
     const [shopeePublishing, setShopeePublishing] = useState(false);
@@ -1389,14 +1394,14 @@ export default function ProductFormShopify({
                             {/* Defect/Clearance Section */}
                             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                                 <div className="flex items-center gap-2 mb-4">
-                                    <h3 className="text-sm font-medium text-gray-900">Jualan Kilang (Clearance)</h3>
+                                    <h3 className="text-sm font-medium text-gray-900">{productFormLabels.clearance.sectionTitle}</h3>
                                     <span className="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs rounded-full">Sale</span>
                                 </div>
 
                                 <div className="flex items-center justify-between mb-4">
                                     <div>
-                                        <span className="text-sm text-gray-700">Produk Defect/Clearance</span>
-                                        <p className="text-xs text-gray-500">Tandakan jika produk ini ada kecacatan untuk dijual pada harga diskaun</p>
+                                        <span className="text-sm text-gray-700">{productFormLabels.clearance.toggleLabel}</span>
+                                        <p className="text-xs text-gray-500">{productFormLabels.clearance.toggleHint}</p>
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input
@@ -1412,27 +1417,27 @@ export default function ProductFormShopify({
                                 {formData.isDefect && (
                                     <div className="space-y-4 pt-4 border-t border-gray-200">
                                         <div>
-                                            <label className="block text-sm text-gray-600 mb-1">Jenis Kecacatan *</label>
+                                            <label className="block text-sm text-gray-600 mb-1">{productFormLabels.clearance.defectTypeLabel}</label>
                                             <select
                                                 value={formData.defectType}
                                                 onChange={(e) => setFormData({ ...formData, defectType: e.target.value })}
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white"
                                             >
-                                                <option value="">Pilih jenis kecacatan</option>
+                                                <option value="">{productFormLabels.clearance.defectTypePlaceholder}</option>
                                                 {Object.entries(defectTypeLabels).map(([value, label]) => (
                                                     <option key={value} value={value}>{label}</option>
                                                 ))}
                                             </select>
                                         </div>
                                         <div>
-                                            <label className="block text-sm text-gray-600 mb-1">Penerangan Kecacatan</label>
+                                            <label className="block text-sm text-gray-600 mb-1">{productFormLabels.clearance.defectDescriptionLabel}</label>
                                             <textarea
                                                 value={formData.defectDescription}
                                                 onChange={(e) => setFormData({ ...formData, defectDescription: e.target.value })}
-                                                placeholder="Terangkan kecacatan produk ini untuk pelanggan..."
+                                                placeholder={productFormLabels.clearance.defectDescriptionPlaceholder}
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg h-20 resize-none"
                                             />
-                                            <p className="text-xs text-gray-500 mt-1">Penerangan ini akan dipaparkan pada halaman jualan kilang</p>
+                                            <p className="text-xs text-gray-500 mt-1">{productFormLabels.clearance.defectDescriptionHint}</p>
                                         </div>
                                     </div>
                                 )}
@@ -1447,8 +1452,8 @@ export default function ProductFormShopify({
 
                                 <div className="flex items-center justify-between mb-4">
                                     <div>
-                                        <span className="text-sm text-gray-700">Benarkan Pre-order</span>
-                                        <p className="text-xs text-gray-500">Pelanggan boleh beli walaupun stok habis (akan diproses dalam tempoh tertentu)</p>
+                                        <span className="text-sm text-gray-700">{productFormLabels.preorder.toggleLabel}</span>
+                                        <p className="text-xs text-gray-500">{productFormLabels.preorder.toggleHint}</p>
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input
@@ -1464,7 +1469,7 @@ export default function ProductFormShopify({
                                 {formData.allowPreorder && (
                                     <div className="space-y-4 pt-4 border-t border-gray-200">
                                         <div>
-                                            <label className="block text-sm text-gray-600 mb-1">Tempoh Penyediaan (hari)</label>
+                                            <label className="block text-sm text-gray-600 mb-1">{productFormLabels.preorder.leadDaysLabel}</label>
                                             <input
                                                 type="number"
                                                 min="1"
@@ -1473,17 +1478,17 @@ export default function ProductFormShopify({
                                                 onChange={(e) => setFormData({ ...formData, preorderLeadDays: parseInt(e.target.value) || 14 })}
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg"
                                             />
-                                            <p className="text-xs text-gray-500 mt-1">Berapa hari yang diperlukan untuk menyediakan produk ini</p>
+                                            <p className="text-xs text-gray-500 mt-1">{productFormLabels.preorder.leadDaysHint}</p>
                                         </div>
                                         <div>
-                                            <label className="block text-sm text-gray-600 mb-1">Mesej Pre-order (pilihan)</label>
+                                            <label className="block text-sm text-gray-600 mb-1">{productFormLabels.preorder.messageLabel}</label>
                                             <textarea
                                                 value={formData.preorderMessage}
                                                 onChange={(e) => setFormData({ ...formData, preorderMessage: e.target.value })}
-                                                placeholder="Contoh: Produk akan siap dalam 2 minggu selepas pesanan disahkan"
+                                                placeholder={productFormLabels.preorder.messagePlaceholder}
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg h-20 resize-none"
                                             />
-                                            <p className="text-xs text-gray-500 mt-1">Mesej ini akan dipaparkan kepada pelanggan semasa checkout</p>
+                                            <p className="text-xs text-gray-500 mt-1">{productFormLabels.preorder.messageHint}</p>
                                         </div>
                                     </div>
                                 )}
@@ -1492,13 +1497,13 @@ export default function ProductFormShopify({
                             {/* Tailoring Settings Section */}
                             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                                 <div className="flex items-center gap-2 mb-4">
-                                    <h3 className="text-sm font-medium text-gray-900">Upah Jahit (Tailoring)</h3>
+                                    <h3 className="text-sm font-medium text-gray-900">{productFormLabels.tailoring.sectionTitle}</h3>
                                     <span className="px-2 py-0.5 bg-teal-100 text-teal-700 text-xs rounded-full">Fabric</span>
                                 </div>
 
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <span className="text-sm text-gray-700">Boleh Dijahit</span>
+                                        <span className="text-sm text-gray-700">{productFormLabels.tailoring.toggleLabel}</span>
                                         <p className="text-xs text-gray-500">Customers can add customization options while buying this product</p>
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
@@ -1515,10 +1520,10 @@ export default function ProductFormShopify({
                                 {formData.isTailorable && (
                                     <div className="mt-4 pt-4 border-t border-gray-200">
                                         <p className="text-xs text-gray-600">
-                                            ✓ Butang "Tambah Upah Jahit" akan dipaparkan pada halaman produk ini.
+                                            {productFormLabels.tailoring.activeButtonHint}
                                         </p>
                                         <p className="text-xs text-gray-500 mt-1">
-                                            Urus perkhidmatan jahitan di <a href="/tailoring" className="text-teal-600 hover:underline">Tetapan Tailoring</a>
+                                            {productFormLabels.tailoring.manageLinkPrefix}<a href="/tailoring" className="text-teal-600 hover:underline">{productFormLabels.tailoring.manageLinkText}</a>
                                         </p>
                                     </div>
                                 )}
