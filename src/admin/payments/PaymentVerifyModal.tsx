@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { X, Check, AlertCircle, Eye, FileText } from 'lucide-react';
-import { Button } from '@niaga/lib-ui/primitives/button';
-import { Textarea } from '@niaga/lib-ui/primitives/textarea';
-import ReceiptViewer from '@niaga/lib-ui/admin/payments/ReceiptViewer';
-import { useToast } from '@niaga/lib-ui/admin/common/Toast';
+import { Button } from '../../primitives/button';
+import { Textarea } from '../../primitives/textarea';
+import ReceiptViewer from './ReceiptViewer';
+import { useToast } from '../common/Toast';
 
 interface PaymentReceipt {
     orderId: string;

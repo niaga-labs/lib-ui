@@ -1,3 +1,5 @@
+'use client';
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../primitives/card';
 import { Badge } from '../../primitives/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../primitives/select';

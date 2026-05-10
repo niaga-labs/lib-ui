@@ -44,7 +44,7 @@ export function SalesChart({ data }: SalesChartProps) {
                                     border: '1px solid hsl(var(--border))',
                                     borderRadius: '6px',
                                 }}
-                                formatter={(value: number) => [`RM ${value.toLocaleString()}`, 'Jualan']}
+                                formatter={(value) => [`RM ${Number(value ?? 0).toLocaleString()}`, 'Jualan']}
                             />
                             <Line
                                 type="monotone"

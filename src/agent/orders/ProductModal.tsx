@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../../primitives/dialog';
 import { Button } from '../../primitives/button';

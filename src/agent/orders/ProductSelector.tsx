@@ -1,6 +1,7 @@
+'use client';
+
 import { useState } from 'react';
 import { Input } from '../../primitives/input';
-import { Button } from '../../primitives/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../primitives/select';
 import { Search, Package } from 'lucide-react';
 import { Card, CardContent } from '../../primitives/card';
@@ -92,12 +93,13 @@ export function ProductSelector({ onSelectProduct }: ProductSelectorProps) {
         <div className="space-y-4">
             {/* Search and Filters */}
             <div className="flex gap-2 flex-wrap">
-                <div className="flex-1 min-w-[200px]">
+                <div className="flex-1 min-w-[200px] relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
                         placeholder="Cari produk..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        icon={<Search className="h-4 w-4" />}
+                        className="pl-9"
                     />
                 </div>
 

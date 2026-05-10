@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Input } from '../../primitives/input';
 import { Label } from '../../primitives/label';

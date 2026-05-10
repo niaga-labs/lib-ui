@@ -1,4 +1,5 @@
-import { useState } from 'react';
+'use client';
+
 import { Input } from '../../primitives/input';
 import { Label } from '../../primitives/label';
 import { Minus, Plus } from 'lucide-react';
@@ -6,7 +7,7 @@ import { Button } from '../../primitives/button';
 
 interface MeterInputProps {
     value: number;
-    onChange: (value: number);
+    onChange: (value: number) => void;
     min?: number;
     max?: number;
     step?: number;

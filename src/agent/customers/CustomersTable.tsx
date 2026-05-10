@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Card, CardContent } from '../../primitives/card';
 import { Input } from '../../primitives/input';
