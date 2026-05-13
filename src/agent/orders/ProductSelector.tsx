@@ -47,9 +47,9 @@ export function ProductSelector({ onSelectProduct }: ProductSelectorProps) {
         },
         {
             id: '3',
-            name: 'Baju Kurung Moden',
+            name: 'Baju Wanita',
             type: 'ready-made',
-            category: 'Baju Kurung',
+            category: 'Wanita',
             pricePerUnit: 180.00,
             colors: ['Hitam', 'Navy', 'Maroon'],
             sizes: [
@@ -61,9 +61,9 @@ export function ProductSelector({ onSelectProduct }: ProductSelectorProps) {
         },
         {
             id: '4',
-            name: 'Jubah Lelaki',
+            name: 'Baju Lelaki',
             type: 'ready-made',
-            category: 'Jubah',
+            category: 'Lelaki',
             pricePerUnit: 220.00,
             colors: ['Putih', 'Hitam', 'Abu-abu'],
             sizes: [
