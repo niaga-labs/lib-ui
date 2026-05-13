@@ -273,7 +273,7 @@ export default function CategoryForm({
                                     label="Category name"
                                     value={formData.name}
                                     onChange={(e) => handleChange('name', e.target.value)}
-                                    placeholder="e.g., Batik Shirts"
+                                    placeholder="e.g., Shirts"
                                     required
                                     helpText="This will be displayed in the storefront navigation"
                                 />

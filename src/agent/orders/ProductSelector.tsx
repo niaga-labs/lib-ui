@@ -31,17 +31,17 @@ export function ProductSelector({ onSelectProduct }: ProductSelectorProps) {
     const [products] = useState<Product[]>([
         {
             id: '1',
-            name: 'Kain Batik Premium',
+            name: 'Kain Premium',
             type: 'fabric',
-            category: 'Batik',
+            category: 'Kain',
             pricePerUnit: 45.00,
             colors: ['Merah', 'Biru', 'Hijau'],
         },
         {
             id: '2',
-            name: 'Kain Songket Sutera',
+            name: 'Kain Sutera',
             type: 'fabric',
-            category: 'Songket',
+            category: 'Kain',
             pricePerUnit: 120.00,
             colors: ['Emas', 'Perak', 'Merah'],
         },

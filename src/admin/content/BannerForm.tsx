@@ -56,7 +56,7 @@ export interface BannerFormProps {
     /** Optional broken-preview fallback path (forwarded to ImageUpload). */
     fallbackImageSrc?: string;
     /** Optional tenant-specific UI rendered below the location selector when
-     *  certain location values are picked (e.g. KDMB's "Kisah Jenama" block). */
+     *  certain location values are picked (e.g. a tenant's brand-story block). */
     renderLocationExtras?: (selectedLocation: string, helpers: BannerFormHelpers) => React.ReactNode;
 }
 
@@ -201,7 +201,7 @@ export default function BannerForm({
                                 </p>
                             </div>
 
-                            {/* Tenant-specific extra fields (e.g. KDMB's brand-story block) */}
+                            {/* Tenant-specific extra fields (e.g. a brand-story block) */}
                             {renderLocationExtras?.(selectedLocation, { register, setValue, watch })}
 
                             <div>
