@@ -95,11 +95,12 @@ interface VariantMatrixEditorProps {
     onChange: (options: VariantOption[], variants: VariantData[], deletedVariantIds?: string[]) => void;
 }
 
-// Predefined option templates
+// Predefined option templates — generic across tenants. Vertical-specific
+// presets (e.g. batik patterns, songket weaves) belong in a tenant config,
+// not baked into lib-ui.
 const OPTION_TEMPLATES = {
     Size: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'],
     Color: ['Red', 'Blue', 'Green', 'Black', 'White', 'Navy', 'Brown'],
-    'Batik Pattern': ['Canting', 'Parang', 'Kawung', 'Mega Mendung', 'Truntum'],
     Material: ['Cotton', 'Silk', 'Polyester', 'Blend'],
 };
 
