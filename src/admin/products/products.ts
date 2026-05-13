@@ -1,7 +1,13 @@
 export type ProductStatus = 'draft' | 'active' | 'archived';
 export type ProductType = 'simple' | 'variable' | 'bundle' | 'digital';
 export type FabricType = 'cotton' | 'silk' | 'polyester' | 'blend' | 'linen' | 'rayon';
-export type BatikTechnique = 'hand_drawn' | 'stamped' | 'printed' | 'combined';
+// Production technique enum. Values are currently batik-specific
+// (hand_drawn/stamped/printed/combined); future tenant extensions
+// can widen the union. Backend column remains `batik_technique`
+// until a coordinated FE+BE+DB rename ships.
+export type ProductionTechnique = 'hand_drawn' | 'stamped' | 'printed' | 'combined';
+/** @deprecated Use `ProductionTechnique` instead. Kept as an alias until callers migrate. */
+export type BatikTechnique = ProductionTechnique;
 
 // Defect types for clearance/sale products
 export type DefectType = 'minor' | 'color' | 'stitch' | 'sample' | 'other';
@@ -139,7 +145,7 @@ export interface Product {
     collections: string[];
 
     fabricType?: FabricType;
-    batikTechnique?: BatikTechnique;
+    batikTechnique?: ProductionTechnique;
     pattern?: string;
     color?: string;
     motifOrigin?: string;
@@ -201,7 +207,7 @@ export interface CreateProductInput {
     categoryId?: string;
     tags?: string[];
     fabricType?: FabricType;
-    batikTechnique?: BatikTechnique;
+    batikTechnique?: ProductionTechnique;
     pattern?: string;
     color?: string;
     motifOrigin?: string;
