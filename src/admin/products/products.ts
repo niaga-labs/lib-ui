@@ -1,8 +1,7 @@
 export type ProductStatus = 'draft' | 'active' | 'archived';
 export type ProductType = 'simple' | 'variable' | 'bundle' | 'digital';
 export type FabricType = 'cotton' | 'silk' | 'polyester' | 'blend' | 'linen' | 'rayon';
-// Production technique values are vertical-neutral. Backend DB column
-// is still named `batik_technique` (rename queued as BE-lane work).
+// Production technique values are vertical-neutral.
 export type ProductionTechnique = 'hand_drawn' | 'stamped' | 'printed' | 'combined';
 
 // Defect types for clearance/sale products
