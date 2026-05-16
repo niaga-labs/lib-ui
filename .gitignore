@@ -4,3 +4,9 @@
 .idea/
 .DS_Store
 *.log
+
+# Dependencies and build artifacts (lib-ui is consumed via file:../lib-ui;
+# package-lock is intentionally not tracked — see commit 8a742ad)
+node_modules/
+package-lock.json
+tsconfig.tsbuildinfo
