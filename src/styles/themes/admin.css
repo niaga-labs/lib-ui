@@ -3,8 +3,7 @@
    Mapped onto the lib-ui --ui-* namespace
    =========================================== */
 
-@layer base {
-    :root {
+:root {
         /* ============ POLARIS COLOR SYSTEM ============ */
 
         /* Surface Colors */
@@ -234,5 +233,4 @@
         --ui-success-foreground: var(--p-text);
         --ui-warning: var(--p-warning);
         --ui-warning-foreground: 210 12% 9%;
-    }
 }
