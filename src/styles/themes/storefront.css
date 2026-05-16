@@ -1,12 +1,11 @@
 /* ===========================================
    STOREFRONT THEME — FASHION TOKENS
    Mapped onto the lib-ui --ui-* namespace.
-   Plus storefront-only --ui-{primary,secondary,accent}-{light,dark}
-   shades used by storefront's local Tailwind extensions.
+   Plus storefront-only primary/secondary/accent light + dark shades
+   used by storefront's local Tailwind extensions.
    =========================================== */
 
-@layer base {
-    :root {
+:root {
         /* Base */
         --ui-background: 42 60% 98%;
         --ui-foreground: 30 20% 10%;
@@ -99,4 +98,3 @@
         --ui-input: 228 45% 20%;
         --ui-ring: 43 58% 52%;
     }
-}

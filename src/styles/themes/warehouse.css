@@ -3,8 +3,7 @@
    Mapped onto the lib-ui --warehouse-* namespace
    =========================================== */
 
-@layer base {
-    :root {
+:root {
         /* Warehouse palette as HSL triples (consumed by tailwind.preset
            via hsl(var(--warehouse-*)) — see frontend-warehouse for the
            canonical Tailwind config wiring). Values match the Tailwind
@@ -21,9 +20,7 @@
            UI in glove-on / shop-floor conditions. */
         --warehouse-touch-target: 44px;
     }
-}
 
-@layer components {
     /* High contrast for warehouse environment */
     .warehouse-container {
         min-height: calc(100vh - 64px);
@@ -143,4 +140,3 @@
     .safe-area-bottom {
         padding-bottom: env(safe-area-inset-bottom, 0);
     }
-}
