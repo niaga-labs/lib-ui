@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { cn } from '../../lib/utils';
+import { BRAND_ADMIN } from '../../brand';
 import {
     Home, ShoppingCart, Package, Warehouse, Users, Tags,
     BarChart3, Settings, ChevronDown, ChevronRight,
@@ -146,9 +147,11 @@ function SidebarItem({ item, depth = 0 }: SidebarItemProps) {
 interface PolarisSidebarProps {
     isOpen: boolean;
     onClose: () => void;
+    /** Wordmark in the sidebar header. Defaults to the lib-ui brand constant. */
+    brand?: string;
 }
 
-export function PolarisSidebar({ isOpen, onClose }: PolarisSidebarProps) {
+export function PolarisSidebar({ isOpen, onClose, brand = BRAND_ADMIN }: PolarisSidebarProps) {
     return (
         <>
             {/* Mobile Overlay */}
@@ -175,7 +178,7 @@ export function PolarisSidebar({ isOpen, onClose }: PolarisSidebarProps) {
                             <Store className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                            <span className="font-semibold text-sm text-[hsl(var(--p-text))]">Niaga Admin</span>
+                            <span className="font-semibold text-sm text-[hsl(var(--p-text))]">{brand}</span>
                             <span className="block text-xs text-[hsl(var(--p-text-subdued))]"></span>
                         </div>
                     </Link>
@@ -259,9 +262,11 @@ export function PolarisTopBar({ onMenuClick }: PolarisTopBarProps) {
 // ============ ADMIN LAYOUT ============
 interface PolarisAdminLayoutProps {
     children: React.ReactNode;
+    /** Passed through to PolarisSidebar. Defaults to the lib-ui brand constant. */
+    brand?: string;
 }
 
-export function PolarisAdminLayout({ children }: PolarisAdminLayoutProps) {
+export function PolarisAdminLayout({ children, brand = BRAND_ADMIN }: PolarisAdminLayoutProps) {
     const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
     return (

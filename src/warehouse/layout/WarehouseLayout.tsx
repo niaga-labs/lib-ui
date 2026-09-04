@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { WifiOff, LogOut } from 'lucide-react';
 import BottomNav from './BottomNav';
 import type { WarehouseAuthApi } from '../types';
+import { BRAND_WAREHOUSE } from '../../brand';
 
 interface WarehouseLayoutProps {
     children: ReactNode;
@@ -15,11 +16,11 @@ interface WarehouseLayoutProps {
      * lib-ui/admin/auth/PermissionGate's `usePermissions` injection.
      */
     useAuth: () => WarehouseAuthApi;
-    /** App title shown in the top header. Defaults to "Niaga Warehouse". */
+    /** App title shown in the top header. Defaults to the lib-ui brand constant. */
     title?: string;
 }
 
-export default function WarehouseLayout({ children, useAuth, title = 'Niaga Warehouse' }: WarehouseLayoutProps) {
+export default function WarehouseLayout({ children, useAuth, title = BRAND_WAREHOUSE }: WarehouseLayoutProps) {
     const { isAuthenticated, user, logout, loading } = useAuth();
     const router = useRouter();
     const pathname = usePathname();
