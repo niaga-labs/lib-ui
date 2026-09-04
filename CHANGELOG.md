@@ -16,7 +16,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - `agent/orders/OrderSuccess` — takes `brand`, default `BRAND_NAME`, used in the WhatsApp message
   - `warehouse/layout/WarehouseLayout` — `title` now defaults to `BRAND_WAREHOUSE` instead of a literal
 - All four props are optional additions, so every existing call site keeps compiling and rendering the same
-  strings.
+  strings. **Precisely: there is one live call site**, `frontend-warehouse/src/components/WarehouseShell.tsx`
+  → `WarehouseLayout`, and it now passes no `title` at all. The Polaris layout is unused (frontend-admin has
+  its own local `AdminLayout`) and both agent components are unused because the storefront agent portal is
+  unbuilt (NIAGA-140). So the compatibility claim is true but nearly vacuous, and worth stating that way.
 
 #### The old brand was still on screen
 
@@ -25,7 +28,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 away from the wordmark next to it again.
 
 That is the argument for this ticket in one line: a brand string with no single home survives a rename. The
-old name is still present in **18 of the 19 repos** as of 2026-09-05 — NIAGA-110 is the sweep.
+old name is still present in **18 of the 19 repos** as of 2026-09-05 — measured, not recalled. Some of those
+hits are now deliberate historical mentions in a CHANGELOG (including this one), so NIAGA-110's sweep has to
+separate "still calls the product Desa Murni" from "records that it used to".
 
 #### Premise corrected
 
