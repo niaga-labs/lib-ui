@@ -5,6 +5,13 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added — a type-check script, so CI can run the step it already calls (NIAGA-134)
+
+- `package.json` gains `"type-check": "tsc --noEmit"`. Three frontend workflows have been running
+  `npm run type-check` for months against a script **no repo declared**, so every frontend CI run failed on a
+  missing script before it reached anything real.
+- It passes: `tsc --noEmit` reports **0 errors** here today.
+
 ### Fixed - six exports subpaths were shadowed by their own wildcard (NIAGA-168)
 
 - Six exact `exports` keys were listed **after** the wildcard covering the same directory, so a resolver

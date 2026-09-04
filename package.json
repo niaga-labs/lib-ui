@@ -49,6 +49,9 @@
         "./agent/performance/*": "./src/agent/performance/*.tsx",
         "./hooks/useAgent": "./src/hooks/useAgent.ts"
     },
+    "scripts": {
+      "type-check": "tsc --noEmit"
+    },
     "dependencies": {
         "clsx": "^2.1.1",
         "tailwind-merge": "^3.4.0"
