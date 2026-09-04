@@ -5,6 +5,34 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed — the brand lives in one constant, not four components (NIAGA-109)
+
+- **`src/brand.ts` is new and exported as `@niaga/lib-ui/brand`.** It holds `BRAND_NAME` (`Niaga`) and the
+  two derived surfaces, `BRAND_ADMIN` and `BRAND_WAREHOUSE`. Four components typed the name out themselves;
+  now each takes it as a **prop defaulting to the constant**, so a consumer can override per app without
+  lib-ui growing a config system (this ticket's explicit "do not"):
+  - `admin/polaris/PolarisLayout` — `PolarisSidebar` and `PolarisAdminLayout` take `brand`, default `BRAND_ADMIN`
+  - `agent/layout/AgentSidebar` — takes `brand`, default `BRAND_NAME`
+  - `agent/orders/OrderSuccess` — takes `brand`, default `BRAND_NAME`, used in the WhatsApp message
+  - `warehouse/layout/WarehouseLayout` — `title` now defaults to `BRAND_WAREHOUSE` instead of a literal
+- All four props are optional additions, so every existing call site keeps compiling and rendering the same
+  strings.
+
+#### The old brand was still on screen
+
+`AgentSidebar`'s logo badge read **`DM`** — Desa Murni, the brand this product stopped using on 2026-09-02
+(NIAGA-99). It is now derived from `brand` (first letters of the first two words), so the badge cannot drift
+away from the wordmark next to it again.
+
+That is the argument for this ticket in one line: a brand string with no single home survives a rename. The
+old name is still present in **18 of the 19 repos** as of 2026-09-05 — NIAGA-110 is the sweep.
+
+#### Premise corrected
+
+NIAGA-109 said lib-ui had **5** files matching `Niaga` under `src`. It is **4**: `PolarisLayout.tsx`,
+`AgentSidebar.tsx`, `OrderSuccess.tsx`, `WarehouseLayout.tsx` — six occurrences between them. Counted
+whole-repo rather than by an assumed directory, after a count taken that way was wrong earlier the same day.
+
 ### Added — a type-check script, so CI can run the step it already calls (NIAGA-134)
 
 - `package.json` gains `"type-check": "tsc --noEmit"`. Three frontend workflows have been running

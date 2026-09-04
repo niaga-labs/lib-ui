@@ -2,13 +2,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { Button } from '../../primitives/button';
 import { CheckCircle2, MessageCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { BRAND_NAME } from '../../brand';
 
 interface OrderSuccessProps {
     orderNumber: string;
     customerPhone: string;
+    /** Name used in the WhatsApp message. Defaults to the lib-ui brand constant. */
+    brand?: string;
 }
 
-export function OrderSuccess({ orderNumber, customerPhone }: OrderSuccessProps) {
+export function OrderSuccess({ orderNumber, customerPhone, brand = BRAND_NAME }: OrderSuccessProps) {
     const router = useRouter();
 
     const handleWhatsApp = () => {
@@ -19,7 +22,7 @@ export function OrderSuccess({ orderNumber, customerPhone }: OrderSuccessProps) 
             `Terima kasih! Pesanan anda telah berjaya dibuat.\n\n` +
             `No. Pesanan: ${orderNumber}\n\n` +
             `Kami akan menghubungi anda tidak lama lagi untuk pengesahan. ` +
-            `Thank you for choosing Niaga!`
+            `Thank you for choosing ${brand}!`
         );
 
         const whatsappUrl = `https://wa.me/${formattedPhone}?text=${message}`;
